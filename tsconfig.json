@@ -1,0 +1,24 @@
+{
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "ES2020",
+    "lib": ["es2020", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "checkJs": false,
+    "moduleResolution": "node",
+    "declarationMap": true,
+    "sourceMap": true,
+    "outFile": "main.js",
+    "outDir": "/dist/",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "plugins": []
+  }
+}

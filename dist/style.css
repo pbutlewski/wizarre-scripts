@@ -1,0 +1,1 @@
+@keyframes menufadein{0%{transform:translateY(-100px)}to{transform:translateY(0)}}.navigation.is--sticky{animation-name:menufadein;animation-duration:.5s}.navbar-section{box-sizing:border-box}.news-item__image-link:hover .news-item__image,.gallery-image:hover .gallery-thumbnail{transform:scale(1.05)}

@@ -1,0 +1,13 @@
+.news-item {
+  $this: &;
+  &__image-link:hover {
+    #{$this}__image {
+      transform: scale(1.05);
+    }
+  }
+}
+.gallery-image:hover {
+  .gallery-thumbnail {
+    transform: scale(1.05);
+  }
+}

@@ -1,0 +1,16 @@
+@keyframes menufadein {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navigation.is--sticky {
+  animation-name: menufadein;
+  animation-duration: 0.5s;
+}
+.navbar-section {
+  box-sizing: border-box;
+}
