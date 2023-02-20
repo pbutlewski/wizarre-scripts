@@ -29,23 +29,19 @@ export function ritualSections() {
     .onStepEnter((response) => {
       // { element, index, direction }
       if (response.direction === 'down') {
-        response.element
-          .querySelector('.text-box.is--summoning-box')
-          .classList.add('is--active');
-        response.element
-          .querySelector('.ritual-image')
-          .classList.add('is--active');
+        document
+          .querySelectorAll('.text-box.is--summoning-box').forEach((element) => element.classList.add('is--active'));
+          document
+          .querySelectorAll('.text-box.is--ritual-image').forEach((element) => element.classList.add('is--active'));
       }
     })
     .onStepExit((response) => {
       // { element, index, direction }
       if (response.direction === 'up') {
-        response.element
-          .querySelector('.text-box.is--summoning-box')
-          .classList.remove('is--active');
-        response.element
-          .querySelector('.ritual-image')
-          .classList.remove('is--active');
+        document
+          .querySelectorAll('.text-box.is--summoning-box').forEach((element) => element.classList.remove('is--active'));
+          document
+          .querySelectorAll('.text-box.is--ritual-image').forEach((element) => element.classList.remove('is--active'));
       }
     });
 }
