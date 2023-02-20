@@ -32,7 +32,7 @@ export function ritualSections() {
         document
           .querySelectorAll('.text-box.is--summoning-box').forEach((element) => element.classList.add('is--active'));
           document
-          .querySelectorAll('.text-box.is--ritual-image').forEach((element) => element.classList.add('is--active'));
+          .querySelectorAll('.ritual-image').forEach((element) => element.classList.add('is--active'));
       }
     })
     .onStepExit((response) => {
@@ -41,7 +41,7 @@ export function ritualSections() {
         document
           .querySelectorAll('.text-box.is--summoning-box').forEach((element) => element.classList.remove('is--active'));
           document
-          .querySelectorAll('.text-box.is--ritual-image').forEach((element) => element.classList.remove('is--active'));
+          .querySelectorAll('.ritual-image').forEach((element) => element.classList.remove('is--active'));
       }
     });
 }
