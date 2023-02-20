@@ -2,6 +2,8 @@ import scrollama from 'scrollama';
 
 export function ritualSections() {
   const scroller = scrollama();
+  const scroller1 = scrollama();
+
   let ritualBoxes = document.querySelectorAll('.text-box.is--summoning-box');
   console.log(ritualBoxes);
   let ritualImages = document.querySelectorAll('.ritual-image');
@@ -34,6 +36,14 @@ export function ritualSections() {
           document
           .querySelectorAll('.ritual-image').forEach((element) => element.classList.add('is--active'));
       }
+    });
+      scroller1
+    .setup({
+      step: '#ritual',
+      offset: 0.5,
+      progress: false,
+      debug: false,
+      threshold: 2,
     })
     .onStepExit((response) => {
       // { element, index, direction }
