@@ -65,7 +65,7 @@ function initData(selector) {
   const wizardSource = [...document.querySelectorAll(selector)];
   const wizardData = wizardSource.map((wizard) => {
     return {
-      images: [...wizard.content.querySelectorAll('.wizard-img')],
+      images: [...wizard.content.querySelectorAll('.wizard-img,.wizard-overlay')],
       item: {
         emblem: {
           icon: wizard.content.querySelector('.stats-emblem > .stats-icon'),
