@@ -1,19 +1,24 @@
 export function wizardSlider() {
   const wizardData = initData('.wizard-source');
   const template = initTemplate();
+  const mobile = mobileTemplate();
   let index = 0;
-  swapWizard(template, wizardData, index);
+  swapWizard(template, wizardData, index, false);
+  swapWizard(mobile, wizardData, index, true)
   const arrowLeft = document.querySelector('.wizard-slider-left');
   const arrowRight = document.querySelector('.wizard-slider-right');
   arrowLeft.addEventListener('click', () => {
     index -= 1;
     if (index < 0) index = wizardData.length - 1;
-    swapWizard(template, wizardData, index);
+    swapWizard(template, wizardData, index, false);
+    swapWizard(template, wizardData, index, true);
+
   });
   arrowRight.addEventListener('click', () => {
     index += 1;
     index = index % wizardData.length;
-    swapWizard(template, wizardData, index);
+    swapWizard(template, wizardData, index, false);
+    swapWizard(mobile, wizardData, index, true);
   });
   const statsCards = [...document.querySelectorAll('.text-box.is--stats-card')];
   for (const card of statsCards) {
@@ -37,11 +42,11 @@ function removeActive(selector) {
   if (activeItems)
     [...activeItems].map((item) => item.classList.remove('is--active'));
 }
-function swapWizard(template, data, index) {
+function swapWizard(template, data, index, mobile) {
   removeActive('.text-box.is--stats-card');
   removeActive('.wizard-overlay');
   const wizard = data[index];
-  template.images.replaceChildren(...wizard.images);
+  if(!mobile) template.images.replaceChildren(...wizard.images);
   replaceItem(template.item.emblem, wizard.item.emblem);
   replaceItem(template.item.hat, wizard.item.hat);
   replaceItem(template.item.robe, wizard.item.robe);
@@ -198,6 +203,93 @@ function initTemplate() {
         ),
         desc: statsSection.querySelector(
           '#staff-card .stats-column.spell .stats-description'
+        ),
+      },
+    },
+  };
+}
+
+
+function mobileTemplate() {
+  const statsSection = document.querySelector('.is--mobile-stats-card');
+  return {
+    item: {
+      emblem: {
+        icon: statsSection.querySelector(
+          '#mobile-emblem .stats-image'
+        ),
+        element: statsSection.querySelector(
+          '#mobile-emblem .stats-data'
+        ),
+      },
+      hat: {
+        icon: statsSection.querySelector(
+          '#mobile-hat  .stats-image'
+        ),
+        element: statsSection.querySelector(
+          '#mobile-hat  .stats-data'
+        ),
+      },
+      robe: {
+        icon: statsSection.querySelector(
+          '#mobile-robe .stats-image'
+        ),
+        element: statsSection.querySelector(
+          '#mobile-robe .stats-data'
+        ),
+      },
+      staff: {
+        icon: statsSection.querySelector(
+          '#mobile-staff .stats-image'
+        ),
+        element: statsSection.querySelector(
+          '#mobile-staff .stats-data'
+        ),
+      },
+    },
+    spell: {
+      teamBuff: {
+        icon: statsSection.querySelector(
+          '#mobile-team-buff .stats-image'
+        ),
+        name: statsSection.querySelector(
+          '#mobile-team-buff .stats-data'
+        ),
+        desc: statsSection.querySelector(
+          '#mobile-team-buff .stats-description'
+        ),
+      },
+      offensiveSpell: {
+        icon: statsSection.querySelector(
+          '#mobile-offensive .stats-image'
+        ),
+        name: statsSection.querySelector(
+          '#mobile-offensive .stats-data'
+        ),
+        desc: statsSection.querySelector(
+          '#mobile-offensive .stats-description'
+        ),
+      },
+      ultimateSpell: {
+        icon: statsSection.querySelector(
+          '#mobile-ultimate .stats-image'
+        ),
+        name: statsSection.querySelector(
+          '#mobile-ultimate .stats-data'
+        ),
+        desc: statsSection.querySelector(
+          '#mobile-ultimate .stats-description'
+        ),
+      },
+      defensiveSpell: {
+        icon: statsSection.querySelector(
+          '#mobile-defensive .stats-image'
+        ),
+        name: statsSection.querySelector(
+          '#mobile-defensive .stats-data'
+        ),
+        desc: statsSection.querySelector(
+          '#mobile-defensive .stats-description'
         ),
       },
     },
