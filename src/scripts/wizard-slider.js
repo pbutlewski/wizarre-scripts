@@ -1,23 +1,23 @@
 export function wizardSlider() {
   const wizardData = initData('.wizard-source');
-  const template = initTemplate();
+  const desktop = initTemplate();
   const mobile = mobileTemplate();
   let index = 0;
-  swapWizard(template, wizardData, index, false);
-  swapWizard(mobile, wizardData, index, true)
+  swapWizard(desktop, wizardData, index, false);
+  swapWizard(mobile, wizardData, index, true);
   const arrowLeft = document.querySelector('.wizard-slider-left');
   const arrowRight = document.querySelector('.wizard-slider-right');
   arrowLeft.addEventListener('click', () => {
     index -= 1;
     if (index < 0) index = wizardData.length - 1;
-    swapWizard(template, wizardData, index, false);
-    swapWizard(template, wizardData, index, true);
+    swapWizard(desktop, wizardData, index, false);
+    swapWizard(mobile, wizardData, index, true);
 
   });
   arrowRight.addEventListener('click', () => {
     index += 1;
     index = index % wizardData.length;
-    swapWizard(template, wizardData, index, false);
+    swapWizard(desktop, wizardData, index, false);
     swapWizard(mobile, wizardData, index, true);
   });
   const statsCards = [...document.querySelectorAll('.text-box.is--stats-card')];
@@ -43,10 +43,15 @@ function removeActive(selector) {
     [...activeItems].map((item) => item.classList.remove('is--active'));
 }
 function swapWizard(template, data, index, mobile) {
-  removeActive('.text-box.is--stats-card');
-  removeActive('.wizard-overlay');
+
   const wizard = data[index];
-  if(!mobile) template.images.replaceChildren(...wizard.images);
+  if(!mobile){ 
+    removeActive('.text-box.is--stats-card');
+    removeActive('.wizard-overlay');
+    template.images.replaceChildren(...wizard.images);
+  }
+  
+  
   replaceItem(template.item.emblem, wizard.item.emblem);
   replaceItem(template.item.hat, wizard.item.hat);
   replaceItem(template.item.robe, wizard.item.robe);
@@ -55,17 +60,20 @@ function swapWizard(template, data, index, mobile) {
   replaceSpell(template.spell.offensiveSpell, wizard.spell.offensiveSpell);
   replaceSpell(template.spell.ultimateSpell, wizard.spell.ultimateSpell);
   replaceSpell(template.spell.defensiveSpell, wizard.spell.defensiveSpell);
+  
+ 
+
 }
 
 function replaceItem(template, data) {
-  template.icon.replaceChildren(data.icon);
-  template.element.replaceChildren(data.element);
+  template.icon.replaceChildren(data.icon.cloneNode(true));
+  template.element.replaceChildren(data.element.cloneNode(true));
 }
 
 function replaceSpell(template, data) {
-  template.icon.replaceChildren(data.icon);
-  template.name.replaceChildren(data.name);
-  template.desc.replaceChildren(data.desc);
+  template.icon.replaceChildren(data.icon.cloneNode(true));
+  template.name.replaceChildren(data.name.cloneNode(true));
+  template.desc.replaceChildren(data.desc.cloneNode(true));
 }
 
 function initData(selector) {
