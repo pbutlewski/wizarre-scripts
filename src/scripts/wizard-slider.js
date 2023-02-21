@@ -19,6 +19,8 @@ export function wizardSlider() {
   for (const card of statsCards) {
     card.addEventListener('click', () => cardClick(card));
   }
+  const firstCard = document.querySelector('#emblem-card');
+  cardClick(firstCard);
 }
 function cardClick(currentCard) {
   const isActive = currentCard.classList.contains('is--active');
