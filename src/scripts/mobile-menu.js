@@ -6,10 +6,10 @@ function toggleMobileMenu() {
 }
 
 function toggleStatsDrawer() {
-  const menu = document.querySelector('.navigation');
-  menu.classList.contains('is--mobile-active')
-    ? menu.classList.remove('is--mobile-active')
-    : menu.classList.add('is--mobile-active');
+  const menu = document.querySelector('.text-box.is--mobile-stats');
+  menu.classList.contains('is--active')
+    ? menu.classList.remove('is--active')
+    : menu.classList.add('is--active');
 }
 
 export function mobileMenu() {
