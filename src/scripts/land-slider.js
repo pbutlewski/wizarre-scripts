@@ -39,7 +39,7 @@ export function initLandSlider() {
 
 function switchLands(id, lands, slider) {
   const shadow = document.querySelector(".land-photo__shadow");
-  const shadowcopy = elm.cloneNode(true);
+  const shadowcopy = shadow.cloneNode(true);
   shadow.parentNode.replaceChild(shadowcopy, shadow);
   id = id % lands.length;
   slider.image.replaceChildren(lands[id].image);
