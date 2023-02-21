@@ -1,5 +1,5 @@
 import { init } from './scripts/sticky-menu';
-import { mobileMenu } from './scripts/mobile-menu';
+import { mobileMenu, statsDrawer } from './scripts/mobile-menu';
 import { ritualAnimation } from './scripts/summon-ritual';
 import { initLandSlider } from './scripts/land-slider';
 import { ritualSections } from './scripts/ritual-sections';
@@ -10,6 +10,7 @@ window.Webflow ||= [];
 window.Webflow.push(() => {
   init();
   mobileMenu();
+  statsDrawer();
   ritualAnimation();
   ritualSections();
   initLandSlider();
