@@ -31,15 +31,21 @@ export function ritualSections() {
     .onStepEnter((response) => {
       // { element, index, direction }
       if (response.direction === 'down') {
-        [...ritualBoxes].forEach((element) =>
-          element.classList.add('is--active')
-        );
-        ritualHeadline.classList.add('is--active');
+        [...ritualBoxes].forEach((element) => activateIfDisabled(element));
+        activateIfDisabled(ritualHeadline);
       } else {
-        [...ritualBoxes].forEach((element) =>
-          element.classList.remove('is--active')
-        );
-        ritualHeadline.classList.remove('is--active');
+        [...ritualBoxes].forEach((element) => disableIfActiavted(element));
+        disableIfActiavted(ritualHeadline);
+      }
+    })
+    .onStepExit((response) => {
+      // { element, index, direction }
+      if (response.direction === 'down') {
+        [...ritualBoxes].forEach((element) => activateIfDisabled(element));
+        activateIfDisabled(ritualHeadline);
+      } else {
+        [...ritualBoxes].forEach((element) => disableIfActiavted(element));
+        disableIfActiavted(ritualHeadline);
       }
     });
 
@@ -54,13 +60,27 @@ export function ritualSections() {
     .onStepEnter((response) => {
       // { element, index, direction }
       if (response.direction === 'down') {
-        [...ritualImages].forEach((element) =>
-          element.classList.add('is--active')
-        );
+        [...ritualImages].forEach((element) => activateIfDisabled(element));
       } else {
-        [...ritualImages].forEach((element) =>
-          element.classList.remove('is--active')
-        );
+        [...ritualImages].forEach((element) => disableIfActiavted(element));
+      }
+    })
+    .onStepExit((response) => {
+      // { element, index, direction }
+      if (response.direction === 'down') {
+        [...ritualImages].forEach((element) => activateIfDisabled(element));
+      } else {
+        [...ritualImages].forEach((element) => disableIfActiavted(element));
       }
     });
+}
+function activateIfDisabled(element) {
+  element.classList.contains('is--active')
+    ? null
+    : element.classList.add('is--active');
+}
+function disableIfActiavted(element) {
+  element.classList.contains('is--active')
+    ? element.classList.remove('is--active')
+    : null;
 }
