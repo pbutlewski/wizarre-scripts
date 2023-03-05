@@ -14,12 +14,8 @@ export function initLetsPlay() {
         window.pageYOffset +
         document.querySelector('.is--lets-play-section').getBoundingClientRect()
           .top;
-      scrollPos = easeOutSine(
-        scrollEl.scrollTop,
-        scrollPos,
-        scrollEl.scrollTop - parentPosition,
-        300
-      );
+      scrollPos = scrollEl.scrollTop - parentPosition;
+
       // update css property --scrollPos with scroll position in pixels
       root.style.setProperty('--scrollPos', scrollPos + 'px');
     }
@@ -30,7 +26,4 @@ export function initLetsPlay() {
 
   // start animation on next animation frame
   window.requestAnimationFrame(animation);
-}
-function easeOutSine(t, b, c, d) {
-  return c * Math.sin((t / d) * (Math.PI / 2)) + b;
 }
