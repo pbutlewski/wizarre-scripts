@@ -5,6 +5,7 @@ import { initLandSlider } from './scripts/land-slider';
 import { ritualSections } from './scripts/ritual-sections';
 import { initMandalas } from './scripts/mandalas';
 import { wizardSlider } from './scripts/wizard-slider';
+import { initLetsPlay } from './scripts/lets-play';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -16,4 +17,5 @@ window.Webflow.push(() => {
   initLandSlider();
   initMandalas();
   wizardSlider();
+  initLetsPlay();
 });
