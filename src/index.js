@@ -6,7 +6,7 @@ import { ritualSections } from './scripts/ritual-sections';
 import { initMandalas } from './scripts/mandalas';
 import { wizardSlider } from './scripts/wizard-slider';
 import { initLetsPlay } from './scripts/lets-play';
-
+import { initDeviceDetection } from './scripts/device-detection';
 window.Webflow ||= [];
 window.Webflow.push(() => {
   init();
@@ -18,4 +18,5 @@ window.Webflow.push(() => {
   initMandalas();
   wizardSlider();
   initLetsPlay();
+  initDeviceDetection();
 });
