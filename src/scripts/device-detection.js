@@ -15,20 +15,24 @@ export function initDeviceDetection() {
   if (x.matches) {
     const device = getMobileOS();
     const downloadButtons = document.querySelectorAll('.download');
-    const moreButton = document.querySelector('.more-platforms');
+    const moreButton = document.querySelectorAll('.more-platforms');
     const buttonsForOther = [...downloadButtons].filter(
       (button) => button.dataset.device !== device
     );
     buttonsForOther.forEach((button) => button.classList.add('hide'));
-    moreButton.classList.add('active');
-    moreButton.addEventListener(
-      'click',
-      (e) => {
-        e.preventDefault();
-        buttonsForOther.forEach((button) => button.classList.remove('hide'));
-        moreButton.classList.remove('active');
-      },
-      false
+    [...moreButton].forEach((button) => button.classList.add('active'));
+    [...moreButton].forEach((button) =>
+      button.addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault();
+          buttonsForOther.forEach((button) => button.classList.remove('hide'));
+          [...moreButton].forEach((button) =>
+            button.classList.remove('active')
+          );
+        },
+        false
+      )
     );
   }
 }
