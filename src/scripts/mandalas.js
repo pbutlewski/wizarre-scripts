@@ -3,13 +3,13 @@ import rive from '@rive-app/canvas';
 export function initMandalas() {
   if (document.getElementById('mandala-2')) {
     const animation1 = new rive.Rive({
-      src: 'https://wizarre.fra1.cdn.digitaloceanspaces.com/mandala.riv',
+      src: 'https://scrl.wizarre.io/files/mandala.riv',
       canvas: document.getElementById('mandala-1'),
       autoplay: true,
       animations: 'mandala-rotate',
     });
     const animation2 = new rive.Rive({
-      src: 'https://wizarre.fra1.cdn.digitaloceanspaces.com/mandala.riv',
+      src: 'https://scrl.wizarre.io/files/mandala.riv',
       canvas: document.getElementById('mandala-2'),
       autoplay: true,
       animations: 'mandala-rotate',
